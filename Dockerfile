@@ -28,7 +28,7 @@ RUN curl -k -sS https://getcomposer.org/installer | php && mv composer.phar /usr
 ADD rest-tests.conf /etc/httpd/conf.d/rest-tests.conf
 
 ADD run.sh /run.sh
-CMD ["/run.sh"]
+ENTRYPOINT ["/run.sh"]
 
 VOLUME ["/tuleap"]
 VOLUME ["/output"]
