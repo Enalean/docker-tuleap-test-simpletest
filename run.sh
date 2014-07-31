@@ -2,6 +2,9 @@
 
 service mysqld start
 
-JOB_NAME=ut /tuleap/tools/continuous_integration/ci_build.sh --workspace=/ --srcdir=tuleap
+export TULEAP_LOCAL_INC=/tuleap/src/etc/local.inc.dist
 
-echo "Completed"
+mkdir -p /var/tmp/codendi_cache
+
+cd /output
+exec php -d include_path="/tuleap/src/www/include:/tuleap/src:/usr/share/pear:." /tuleap/tests/bin/simpletest $@

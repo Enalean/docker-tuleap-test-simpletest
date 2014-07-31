@@ -23,7 +23,7 @@ RUN yum -y install php-pecl-xdebug && yum clean all
 RUN rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
 RUN rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
 ADD rpmforge.repo /etc/yum.repos.d/
-RUN yum -y install git && yum clean all
+RUN yum -y install --enablerepo=rpmforge-extras git && yum clean all
 
 ADD Tuleap.repo /etc/yum.repos.d/
 RUN yum -y install php-zendframework && yum clean all
@@ -38,11 +38,17 @@ RUN yum -y install php-password-compat && yum clean all
 ## ADDED
 RUN yum -y install unzip && yum clean all
 RUN yum -y install tar && yum clean all
+RUN yum -y install subversion && yum clean all
+
+RUN git config --global user.email "ut@tuleap.org"
+RUN git config --global user.name "Unit test runner"
 
 RUN service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'"
 
 ADD run.sh /run.sh
 ENTRYPOINT ["/run.sh"]
+
+CMD ["-x", "/tuleap/tests/simpletest", "/tuleap/plugins", "/tuleap/tests/integration"]
 
 VOLUME ["/tuleap"]
 VOLUME ["/output"]
