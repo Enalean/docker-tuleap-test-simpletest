@@ -38,10 +38,17 @@ RUN yum -y install tar && yum clean all
 
 RUN yum -y install php-pecl-json && yum clean all
 
+RUN yum -y install subversion && yum clean all
+
 RUN service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'"
+
+RUN git config --global user.email "ut@tuleap.org"
+RUN git config --global user.name "Unit test runner"
 
 ADD run.sh /run.sh
 ENTRYPOINT ["/run.sh"]
+
+CMD ["-x", "/tuleap/tests/simpletest", "/tuleap/plugins", "/tuleap/tests/integration"]
 
 VOLUME ["/tuleap"]
 VOLUME ["/output"]
