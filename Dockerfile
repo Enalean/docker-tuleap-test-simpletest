@@ -1,7 +1,11 @@
-## Re-use tuleap base for caching ##
-FROM centos:centos6
+FROM fatherlinux/centos5-base
 
 MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
+
+# EPEL
+RUN rpm -i http://fr2.rpmfind.net/linux/epel/5/i386/epel-release-5-4.noarch.rpm
+
+ADD Tuleap.repo /etc/yum.repos.d/
 
 # Update to last version
 RUN yum -y update; yum clean all
@@ -10,22 +14,15 @@ RUN yum -y install php && yum clean all
 RUN yum -y install php-soap && yum clean all
 RUN yum -y install php-mysql && yum clean all
 RUN yum -y install php-gd && yum clean all
-RUN yum -y install php-process && yum clean all
 RUN yum -y install php-xml && yum clean all
 RUN yum -y install php-mbstring && yum clean all
 RUN yum -y install mysql-server && yum clean all
 
-# EPEL
-RUN rpm -i http://mir01.syntis.net/epel/6/i386/epel-release-6-8.noarch.rpm
 RUN yum -y install php-pecl-xdebug && yum clean all
 
-# Repoforge
-RUN rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
-RUN rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-ADD rpmforge.repo /etc/yum.repos.d/
 RUN yum -y install git && yum clean all
 
-ADD Tuleap.repo /etc/yum.repos.d/
+
 RUN yum -y install php-zendframework && yum clean all
 RUN yum -y install htmlpurifier && yum clean all
 RUN yum -y install jpgraph-tuleap && yum clean all
@@ -38,6 +35,8 @@ RUN yum -y install php-password-compat && yum clean all
 ## ADDED
 RUN yum -y install unzip && yum clean all
 RUN yum -y install tar && yum clean all
+
+RUN yum -y install php-pecl-json && yum clean all
 
 RUN service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'"
 
