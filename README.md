@@ -6,12 +6,11 @@ How to use
 
 To execute all tests, just type:
 
-    $> docker run --rm=true -v $PWD:/tuleap enalean/tuleap-test-rest
+    $> docker run --rm=true -v $PWD:/tuleap enalean/tuleap-test-ut-c5-php51
 
-To execute only one file (actually you can pass any PhpUnit option):
+To execute only one file/dir (for instance git plugin):
 
-    $> docker run --rm=true -v $PWD:/tuleap enalean/tuleap-test-rest tests/rest/ProjectTest.php
-
+    $> docker run --rm=true -v $PWD:/tuleap enalean/tuleap-test-ut-c5-php51 /tuleap/plugins/git
 
 Continuous integration usage
 ----------------------------
