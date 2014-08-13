@@ -39,6 +39,7 @@ RUN yum -y install php-password-compat && yum clean all
 RUN yum -y install unzip && yum clean all
 RUN yum -y install tar && yum clean all
 RUN yum -y install subversion && yum clean all
+RUN yum -y install bzip2 && yum clean all
 
 RUN git config --global user.email "ut@tuleap.org"
 RUN git config --global user.name "Unit test runner"
