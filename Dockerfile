@@ -6,18 +6,17 @@ MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
 # Update to last version
 RUN yum -y update; yum clean all
 
-RUN yum -y install php && yum clean all
-RUN yum -y install php-soap && yum clean all
-RUN yum -y install php-mysql && yum clean all
-RUN yum -y install php-gd && yum clean all
-RUN yum -y install php-process && yum clean all
-RUN yum -y install php-xml && yum clean all
-RUN yum -y install php-mbstring && yum clean all
-RUN yum -y install mysql-server && yum clean all
+RUN rpm -i http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+RUN rpm -i http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 
-# EPEL
-RUN rpm -i http://mir01.syntis.net/epel/6/i386/epel-release-6-8.noarch.rpm
-RUN yum -y install php-pecl-xdebug && yum clean all
+RUN yum -y install --enablerepo=remi php && yum clean all
+RUN yum -y install --enablerepo=remi php-soap && yum clean all
+RUN yum -y install --enablerepo=remi php-mysql && yum clean all
+RUN yum -y install --enablerepo=remi php-gd && yum clean all
+RUN yum -y install --enablerepo=remi php-process && yum clean all
+RUN yum -y install --enablerepo=remi php-xml && yum clean all
+RUN yum -y install --enablerepo=remi php-mbstring && yum clean all
+RUN yum -y install --enablerepo=remi mysql-server && yum clean all
 
 # Repoforge
 RUN rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
@@ -40,6 +39,9 @@ RUN yum -y install unzip && yum clean all
 RUN yum -y install tar && yum clean all
 RUN yum -y install subversion && yum clean all
 RUN yum -y install bzip2 && yum clean all
+
+RUN yum -y install --enablerepo=remi php-pecl-apc && yum clean all
+RUN yum -y install --enablerepo=remi php-pecl-xdebug && yum clean all
 
 RUN git config --global user.email "ut@tuleap.org"
 RUN git config --global user.name "Unit test runner"
