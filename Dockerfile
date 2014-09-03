@@ -22,7 +22,6 @@ RUN yum -y install php-pecl-xdebug && yum clean all
 
 RUN yum -y install git && yum clean all
 
-
 RUN yum -y install php-zendframework && yum clean all
 RUN yum -y install htmlpurifier && yum clean all
 RUN yum -y install jpgraph-tuleap && yum clean all
@@ -35,6 +34,11 @@ RUN yum -y install php-password-compat && yum clean all
 ## ADDED
 RUN yum -y install unzip && yum clean all
 RUN yum -y install tar && yum clean all
+RUN yum -y install subversion && yum clean all
+RUN yum -y install bzip2 && yum clean all
+
+RUN git config --global user.email "ut@tuleap.org"
+RUN git config --global user.name "Unit test runner"
 
 RUN yum -y install php-pecl-json && yum clean all
 
@@ -51,4 +55,3 @@ ENTRYPOINT ["/run.sh"]
 CMD ["-x", "/tuleap/tests/simpletest", "/tuleap/plugins", "/tuleap/tests/integration"]
 
 VOLUME ["/tuleap"]
-VOLUME ["/output"]

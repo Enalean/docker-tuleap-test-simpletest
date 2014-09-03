@@ -1,5 +1,5 @@
-Docker image to execute Tuleap REST tests
-=========================================
+Docker image to execute Tuleap PHP 5.1 tests
+===========================================
 
 How to use
 ==========
@@ -17,11 +17,9 @@ you can tell it so we don't start db:
 
     $> docker run --rm=true -v $PWD:/tuleap enalean/tuleap-test-ut-c5-php51 --nodb /tuleap/tests/rest/ProjectTest.php
 
-
 Continuous integration usage
 ----------------------------
 
 For jenkins builds:
 
-    $> docker run --rm=true -v $WORKSPACE/tuleap:/tuleap -v $WORKSPACE:/output enalean/tuleap-test-rest
-
+    $> docker run --rm=true -v $WORKSPACE/tuleap:/tuleap enalean/tuleap-test-ut-c5-php51
