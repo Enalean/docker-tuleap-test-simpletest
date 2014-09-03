@@ -19,6 +19,10 @@ RUN yum -y install mysql-server && yum clean all
 RUN rpm -i http://mir01.syntis.net/epel/6/i386/epel-release-6-8.noarch.rpm
 RUN yum -y install php-pecl-xdebug && yum clean all
 
+# Uncomment when EPEL start shitting bricks (like 404)
+# RUN sed -i 's/#baseurl/baseurl/' /etc/yum.repos.d/epel.repo
+# RUN sed -i 's/mirrorlist/#mirrorlist/' /etc/yum.repos.d/epel.repo
+
 # Repoforge
 RUN rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
 RUN rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
