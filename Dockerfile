@@ -56,4 +56,3 @@ ENTRYPOINT ["/run.sh"]
 CMD ["-x", "/tuleap/tests/simpletest", "/tuleap/plugins", "/tuleap/tests/integration"]
 
 VOLUME ["/tuleap"]
-VOLUME ["/output"]
