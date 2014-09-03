@@ -6,7 +6,7 @@ options=`getopt -o h,x -l nodb -- "$@"`
 eval set -- "$options"
 
 withdb=1
-options=
+runopts=
 
 while true
 do
@@ -15,7 +15,7 @@ do
 	    withdb=
 	    shift 1;;
 	-x)
-	    options=-x
+	    runopts=-x
 	    shift 1;;
 	--)
 	    shift 1; break ;;
@@ -34,4 +34,4 @@ mkdir -p /var/tmp/codendi_cache
 
 mkdir -p /output
 cd /output
-exec php -d include_path="/tuleap/src/www/include:/tuleap/src:/usr/share/pear:." /tuleap/tests/bin/simpletest $options $@
+exec php -d include_path="/tuleap/src/www/include:/tuleap/src:/usr/share/pear:." /tuleap/tests/bin/simpletest $runopts $@
