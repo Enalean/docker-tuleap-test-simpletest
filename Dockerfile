@@ -1,4 +1,4 @@
-FROM fatherlinux/centos5-base
+FROM centos:centos5
 
 MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
 
