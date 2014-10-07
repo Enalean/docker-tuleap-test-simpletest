@@ -18,6 +18,10 @@ RUN yum -y install --enablerepo=remi,remi-php55 php-xml && yum clean all
 RUN yum -y install --enablerepo=remi,remi-php55 php-mbstring && yum clean all
 RUN yum -y install --enablerepo=remi,remi-php55 mysql-server && yum clean all
 
+# Uncomment when EPEL start shitting bricks (like 404)
+# RUN sed -i 's/#baseurl/baseurl/' /etc/yum.repos.d/epel.repo
+# RUN sed -i 's/mirrorlist/#mirrorlist/' /etc/yum.repos.d/epel.repo
+
 # Repoforge
 RUN rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
 RUN rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
@@ -53,4 +57,3 @@ ENTRYPOINT ["/run.sh"]
 CMD ["-x", "/tuleap/tests/simpletest", "/tuleap/plugins", "/tuleap/tests/integration"]
 
 VOLUME ["/tuleap"]
-VOLUME ["/output"]
