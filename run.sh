@@ -2,13 +2,6 @@
 
 set -e
 
-prepareEnvironmentToSurviveElderCrappyTests(){
-    ln -s /tuleap /usr/share/codendi
-    ln -s /tuleap /usr/share/tuleap
-
-    export TULEAP_LOCAL_INC=/tuleap/src/etc/local.inc.dist
-    mkdir -p /var/tmp/codendi_cache
-}
 options=`getopt -o h,x -l nodb -- "$@"`
 eval set -- "$options"
 
@@ -35,7 +28,9 @@ if [ -n "$withdb" ]; then
     service mysqld start
 fi
 
-prepareEnvironmentToSurviveElderCrappyTests
+export TULEAP_LOCAL_INC=/tuleap/src/etc/local.inc.dist
+
+mkdir -p /var/tmp/codendi_cache
 
 mkdir -p /output
 cd /output
