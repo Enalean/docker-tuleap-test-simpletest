@@ -34,12 +34,13 @@ RUN yum -y install --enablerepo=remi --enablerepo=rpmforge-extras \
     rcs \
     cvs \
     php-guzzle \
-    php-password-compat \
     unzip \
     tar \
     subversion \
     bzip2 && \
     yum clean all
+
+RUN yum install -y php-password-compat && yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
 
