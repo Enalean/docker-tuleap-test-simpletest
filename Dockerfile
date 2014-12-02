@@ -22,6 +22,7 @@ RUN yum -y install --enablerepo=remi --enablerepo=rpmforge-extras \
     php-process \
     php-xml \
     php-mbstring \
+    php-restler \
     php-pecl-apc \
     php-pecl-xdebug \
     mysql-server \
