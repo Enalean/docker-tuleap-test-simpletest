@@ -26,6 +26,7 @@ RUN yum -y install --enablerepo=remi,remi-php55 --enablerepo=rpmforge-extras \
     mysql-server \
     php-zendframework \
     htmlpurifier \
+    php-password-compat \
     jpgraph-tuleap \
     php-pear-Mail-mimeDecode \
     rcs \
