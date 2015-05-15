@@ -26,7 +26,6 @@ RUN yum -y install --enablerepo=remi,remi-php55 --enablerepo=rpmforge-extras \
     mysql-server \
     php-zendframework \
     htmlpurifier \
-    php-password-compat \
     jpgraph-tuleap \
     php-pear-Mail-mimeDecode \
     rcs \
@@ -40,6 +39,8 @@ RUN yum -y install --enablerepo=remi,remi-php55 --enablerepo=rpmforge-extras \
     php-opcache \
     git && \
     yum clean all
+
+RUN yum install -y php-password-compat && yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
 
