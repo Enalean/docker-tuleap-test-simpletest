@@ -1,6 +1,7 @@
 FROM centos:centos5
 
 MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
+MAINTAINER Yannis ROSSETTO <yannis.rossetto@enalean.com>
 
 # EPEL
 RUN rpm -i http://fr2.rpmfind.net/linux/epel/5/i386/epel-release-5-4.noarch.rpm
@@ -29,6 +30,7 @@ RUN yum -y install php \
     subversion \
     bzip2 \
     php-pecl-json \
+    php-pecl-zip \
     subversion && \
     yum clean all
 
