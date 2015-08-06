@@ -2,6 +2,7 @@
 FROM centos:centos6
 
 MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
+MAINTAINER Yannis ROSSETTO <yannis.rossetto@enalean.com>
 
 RUN rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt && \
     rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm && \
@@ -40,6 +41,8 @@ RUN yum -y --enablerepo=rpmforge-extras install php \
     && yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
+
+RUN useradd codendiadm
 
 RUN service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'"
 
