@@ -2,6 +2,7 @@
 FROM centos:centos6
 
 MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
+MAINTAINER Yannis ROSSETTO <yannis.rossetto@enalean.com>
 
 RUN rpm -i http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm && \
     rpm -i http://rpms.famillecollet.com/enterprise/remi-release-6.rpm && \
@@ -43,6 +44,8 @@ RUN yum -y install --enablerepo=remi,remi-php55 --enablerepo=rpmforge-extras \
 RUN yum install -y php-password-compat && yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
+
+RUN useradd codendiadm
 
 RUN service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'"
 
