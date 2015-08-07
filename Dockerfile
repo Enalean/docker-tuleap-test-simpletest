@@ -38,6 +38,7 @@ RUN yum -y install --enablerepo=remi --enablerepo=rpmforge-extras \
     unzip \
     tar \
     subversion \
+    php-markdown \
     bzip2 && \
     yum clean all
 
