@@ -22,6 +22,7 @@ RUN yum -y --enablerepo=rpmforge-extras install php \
     php-process \
     php-xml \
     php-mbstring \
+    php-imap \
     php-restler \
     mysql-server \
     php-zendframework \
