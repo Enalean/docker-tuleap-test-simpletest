@@ -14,6 +14,7 @@ RUN yum -y install php \
     php-gd \
     php-xml \
     php-mbstring \
+    php-imap \
     mysql-server \
     php-pecl-xdebug \
     git \
