@@ -40,7 +40,8 @@ RUN yum -y install --enablerepo=remi,remi-php55 --enablerepo=rpmforge-extras \
     php-pecl-xdebug \
     php-opcache \
     git \
-    php-markdown && \
+    php-markdown \
+    sudo && \
     yum clean all
 
 RUN yum install -y php-password-compat && yum clean all
