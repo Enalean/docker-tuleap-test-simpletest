@@ -46,6 +46,7 @@ RUN yum -y --enablerepo=rpmforge-extras install php \
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
 
 RUN useradd codendiadm
+RUN useradd gitolite
 
 RUN service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'"
 
