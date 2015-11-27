@@ -40,7 +40,8 @@ RUN yum -y install --enablerepo=remi --enablerepo=rpmforge-extras \
     tar \
     subversion \
     php-markdown \
-    bzip2 && \
+    bzip2 \
+    sudo && \
     yum clean all
 
 RUN yum install -y php-password-compat && yum clean all
