@@ -40,7 +40,8 @@ RUN yum -y --enablerepo=rpmforge-extras install php \
     php-pecl-xdebug \
     git \
     php-markdown \
-    && yum clean all
+    sudo && \
+    yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
 
