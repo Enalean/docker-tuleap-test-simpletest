@@ -41,6 +41,7 @@ RUN yum -y install --enablerepo=remi,remi-php55 --enablerepo=rpmforge-extras \
     php-opcache \
     git \
     php-markdown \
+    php-jwt \
     sudo && \
     yum clean all
 
