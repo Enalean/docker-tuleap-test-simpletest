@@ -30,6 +30,8 @@ RUN yum install -y epel-release && \
     subversion \
     bzip2 \
     git && \
+    php-jwt \
+    sudo && \
     yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner" && \
