@@ -40,6 +40,7 @@ RUN yum -y --enablerepo=rpmforge-extras install php \
     php-pecl-xdebug \
     git \
     php-markdown \
+    php-jwt \
     sudo && \
     yum clean all
 
