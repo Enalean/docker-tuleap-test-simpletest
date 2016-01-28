@@ -43,6 +43,7 @@ RUN yum -y --enablerepo=rpmforge-extras install php \
     git \
     php-markdown \
     php-jwt \
+    php-mediawiki-tuleap \
     sudo && \
     yum clean all
 
