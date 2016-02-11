@@ -35,6 +35,7 @@ RUN yum install -y epel-release && \
     bzip2 \
     git && \
     php-jwt \
+    php-openid-connect-client \
     sudo && \
     yum clean all
 
