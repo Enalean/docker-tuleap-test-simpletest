@@ -33,7 +33,7 @@ RUN yum install -y epel-release && \
     tar \
     subversion \
     bzip2 \
-    git && \
+    git \
     php-jwt \
     php-openid-connect-client \
     sudo && \
