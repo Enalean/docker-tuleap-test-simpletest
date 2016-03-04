@@ -33,6 +33,7 @@ RUN yum -y --enablerepo=rpmforge-extras install php \
     cvs \
     php-guzzle \
     php-password-compat \
+    php-paragonie-random-compat \
     php-ZendFramework2-Loader \
     php-ZendFramework2-Mail \
     unzip \
