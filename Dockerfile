@@ -36,6 +36,7 @@ RUN yum -y install --enablerepo=remi --enablerepo=rpmforge-extras \
     rcs \
     cvs \
     php-guzzle \
+    php-paragonie-random-compat \
     php-ZendFramework2-Loader \
     php-ZendFramework2-Mail \
     unzip \
