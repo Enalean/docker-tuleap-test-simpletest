@@ -4,26 +4,20 @@ FROM centos:centos6
 MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
 MAINTAINER Yannis ROSSETTO <yannis.rossetto@enalean.com>
 
-RUN rpm -i http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm && \
-    rpm -i http://rpms.famillecollet.com/enterprise/remi-release-6.rpm && \
-    rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt && \
+RUN yum install -y epel-release rpmforge-release centos-release-scl && \
     rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
 
 COPY *.repo /etc/yum.repos.d/
 
-# Uncomment when EPEL start shitting bricks (like 404)
-# RUN sed -i 's/#baseurl/baseurl/' /etc/yum.repos.d/epel.repo
-# RUN sed -i 's/mirrorlist/#mirrorlist/' /etc/yum.repos.d/epel.repo
-
-RUN yum -y install --enablerepo=remi,remi-php55 --enablerepo=rpmforge-extras \
-    php \
-    php-soap \
-    php-mysql \
-    php-gd \
-    php-process \
-    php-xml \
-    php-mbstring \
-    php-imap \
+RUN yum -y install  \
+    rh-php56-php \
+    rh-php56-php-soap \
+    rh-php56-php-mysqlnd \
+    rh-php56-php-gd \
+    rh-php56-php-process \
+    rh-php56-php-xml \
+    rh-php56-php-mbstring \
+    rh-php56-php-imap \
     php-restler \
     mysql-server \
     php-zendframework \
@@ -41,13 +35,12 @@ RUN yum -y install --enablerepo=remi,remi-php55 --enablerepo=rpmforge-extras \
     subversion \
     bzip2 \
     php-pecl-xdebug \
-    php-opcache \
-    git \
     php-markdown \
     php-jwt \
     php-openid-connect-client \
     php-mediawiki-tuleap \
     sudo && \
+    yum install --enablerepo=rpmforge-extras -y git && \
     yum clean all
 
 RUN yum install -y php-password-compat && yum clean all
@@ -62,7 +55,9 @@ RUN ln -s /usr/share/tuleap/ /tuleap
 RUN service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'"
 
 COPY run.sh /run.sh
-ENTRYPOINT ["/run.sh"]
+COPY run-with-php56.sh /run-with-php56.sh
+
+ENTRYPOINT ["/run-with-php56.sh"]
 
 CMD ["-x", "/tuleap/tests/simpletest", "/tuleap/plugins", "/tuleap/tests/integration"]
 
