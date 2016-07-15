@@ -27,6 +27,8 @@ RUN yum -y install  \
     rcs \
     cvs \
     php-guzzle \
+    php-guzzle-Guzzle \
+    php-password-compat \
     php-paragonie-random-compat \
     php-ZendFramework2-Loader \
     php-ZendFramework2-Mail \
