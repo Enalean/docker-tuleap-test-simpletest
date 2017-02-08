@@ -4,12 +4,10 @@ FROM centos:centos6
 MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
 MAINTAINER Yannis ROSSETTO <yannis.rossetto@enalean.com>
 
-RUN yum install -y epel-release rpmforge-release centos-release-scl && \
-    rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-
 COPY *.repo /etc/yum.repos.d/
 
-RUN yum -y install  \
+RUN yum install -y epel-release centos-release-scl && \
+    yum -y install \
     rh-php56-php \
     rh-php56-php-soap \
     rh-php56-php-mysqlnd \
@@ -40,12 +38,12 @@ RUN yum -y install  \
     php-markdown \
     php-jwt \
     php-openid-connect-client \
+    php-password-compat \
     php-mediawiki-tuleap \
-    sudo && \
-    yum install --enablerepo=rpmforge-extras -y git && \
+    sudo \
+    git \
+    git19 && \
     yum clean all
-
-RUN yum install -y php-password-compat && yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
 
