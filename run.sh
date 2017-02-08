@@ -2,11 +2,13 @@
 
 set -e
 
-options=`getopt -o h,x -l nodb -- "$@"`
+options=`getopt -o h,x -l nodb,random -- "$@"`
 eval set -- "$options"
 
 withdb=1
 runopts=
+randomopt=
+
 
 while true
 do
@@ -16,6 +18,9 @@ do
 	    shift 1;;
 	-x)
 	    runopts=-x
+	    shift 1;;
+	--random)
+	    randomopt='--order=random'
 	    shift 1;;
 	--)
 	    shift 1; break ;;
@@ -37,4 +42,5 @@ mkdir -p /output
 echo "Defaults:root    !requiretty" >> /etc/sudoers
 
 cd /output
-exec php -d include_path="/tuleap/src/www/include:/tuleap/src:/usr/share/pear:." /tuleap/tests/bin/simpletest $runopts $@
+
+exec php -d include_path="/tuleap/src/www/include:/tuleap/src:/usr/share/pear:." /tuleap/tests/bin/simpletest $runopts $randomopt $@
