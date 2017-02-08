@@ -4,25 +4,18 @@ FROM centos:centos6
 MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
 MAINTAINER Yannis ROSSETTO <yannis.rossetto@enalean.com>
 
-RUN rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt && \
-    rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm && \
-    rpm -i http://mir01.syntis.net/epel/6/i386/epel-release-6-8.noarch.rpm
-
 COPY *.repo /etc/yum.repos.d/
 
-# Uncomment when EPEL start shitting bricks (like 404)
-# RUN sed -i 's/#baseurl/baseurl/' /etc/yum.repos.d/epel.repo
-# RUN sed -i 's/mirrorlist/#mirrorlist/' /etc/yum.repos.d/epel.repo
-
-RUN yum -y --enablerepo=rpmforge-extras install php \
-    php-pecl-xdebug \
-    php-soap \
-    php-mysql \
-    php-gd \
-    php-process \
-    php-xml \
-    php-mbstring \
-    php-imap \
+RUN yum install -y epel-release centos-release-scl && \
+    yum -y install \
+    rh-php56-php \
+    rh-php56-php-soap \
+    rh-php56-php-mysqlnd \
+    rh-php56-php-gd \
+    rh-php56-php-process \
+    rh-php56-php-xml \
+    rh-php56-php-mbstring \
+    rh-php56-php-imap \
     php-restler \
     mysql-server \
     php-zendframework \
@@ -46,8 +39,11 @@ RUN yum -y --enablerepo=rpmforge-extras install php \
     php-markdown \
     php-jwt \
     php-openid-connect-client \
+    php-password-compat \
     php-mediawiki-tuleap \
-    sudo && \
+    sudo \
+    git \
+    git19 && \
     yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
