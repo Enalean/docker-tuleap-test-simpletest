@@ -6,16 +6,16 @@ MAINTAINER Yannis ROSSETTO <yannis.rossetto@enalean.com>
 
 COPY *.repo /etc/yum.repos.d/
 
-RUN yum install -y epel-release centos-release-scl && \
-    yum -y install \
-    rh-php56-php \
-    rh-php56-php-soap \
-    rh-php56-php-mysqlnd \
-    rh-php56-php-gd \
-    rh-php56-php-process \
-    rh-php56-php-xml \
-    rh-php56-php-mbstring \
-    rh-php56-php-imap \
+RUN yum install -y epel-release && \
+    yum -y install php \
+    php-pecl-xdebug \
+    php-soap \
+    php-mysql \
+    php-gd \
+    php-process \
+    php-xml \
+    php-mbstring \
+    php-imap \
     php-restler \
     mysql-server \
     php-zendframework \
@@ -36,14 +36,12 @@ RUN yum install -y epel-release centos-release-scl && \
     bzip2 \
     php-pecl-xdebug \
     git \
+    git19 \
     php-markdown \
     php-jwt \
     php-openid-connect-client \
-    php-password-compat \
     php-mediawiki-tuleap \
-    sudo \
-    git \
-    git19 && \
+    sudo && \
     yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
