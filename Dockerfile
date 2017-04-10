@@ -33,6 +33,7 @@ RUN yum install -y epel-release && \
     unzip \
     tar \
     subversion \
+    sha1collisiondetector \
     bzip2 \
     php-pecl-xdebug \
     git \
