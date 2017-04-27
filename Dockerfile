@@ -16,6 +16,7 @@ RUN yum install -y epel-release && \
     php-xml \
     php-mbstring \
     php-imap \
+    php-intl \
     php-restler \
     mysql-server \
     php-zendframework \
