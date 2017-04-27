@@ -16,6 +16,7 @@ RUN yum install -y epel-release centos-release-scl && \
     rh-php56-php-xml \
     rh-php56-php-mbstring \
     rh-php56-php-imap \
+    rh-php56-php-intl \
     sclo-php56-php-pecl-redis \
     php-restler \
     mysql-server \
