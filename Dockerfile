@@ -45,7 +45,8 @@ RUN yum install -y epel-release centos-release-scl && \
     php-mediawiki-tuleap \
     sudo \
     git \
-    git19 && \
+    git19 \
+    rh-git29-git && \
     yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
