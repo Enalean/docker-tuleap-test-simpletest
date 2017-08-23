@@ -6,7 +6,7 @@ MAINTAINER Yannis ROSSETTO <yannis.rossetto@enalean.com>
 
 COPY *.repo /etc/yum.repos.d/
 
-RUN yum install -y epel-release && \
+RUN yum install -y epel-release centos-release-scl && \
     yum -y install php \
     php-pecl-xdebug \
     php-soap \
@@ -39,6 +39,7 @@ RUN yum install -y epel-release && \
     php-pecl-xdebug \
     git \
     git19 \
+    rh-git29-git \
     php-markdown \
     php-jwt \
     php-openid-connect-client \
