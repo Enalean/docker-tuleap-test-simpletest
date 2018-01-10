@@ -1,5 +1,5 @@
 ## Re-use tuleap base for caching ##
-FROM centos:centos6
+FROM centos:6
 
 MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
 MAINTAINER Yannis ROSSETTO <yannis.rossetto@enalean.com>
@@ -17,6 +17,7 @@ RUN yum install -y epel-release centos-release-scl && \
     rh-php56-php-mbstring \
     rh-php56-php-imap \
     rh-php56-php-intl \
+    rh-php56-php-pecl-xdebug \
     sclo-php56-php-pecl-redis \
     php-restler \
     mysql-server \
