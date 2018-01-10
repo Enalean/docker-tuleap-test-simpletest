@@ -52,8 +52,8 @@ RUN yum install -y epel-release centos-release-scl && \
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
 
-RUN useradd codendiadm
-RUN useradd gitolite
+RUN useradd codendiadm || echo 'codendiadm user already exist'
+RUN useradd gitolite || echo 'gitolite user already exist'
 
 RUN ln -s /usr/share/tuleap/ /tuleap
 
