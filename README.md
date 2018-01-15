@@ -1,6 +1,8 @@
 Docker image to execute Tuleap on PHP54 tests
 =============================================
 
+** This branch is deprecated, please look at: https://github.com/Enalean/docker-tuleap-test-simpletest/tree/c6-php56 **
+
 How to use
 ==========
 
