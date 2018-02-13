@@ -47,7 +47,8 @@ RUN yum install -y epel-release centos-release-scl && \
     sudo \
     git \
     git19 \
-    rh-git29-git && \
+    rh-git29-git \
+    gitolite3 && \
     yum clean all
 
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner"
