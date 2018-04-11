@@ -1,16 +1,16 @@
-Docker image to execute Tuleap tests on PHP 5.6
+Docker image to execute Tuleap tests on PHP 7.0
 ===============================================
 
 How to use
 ==========
 
-To execute all tests, just type:
+This is meant to be used from Tuleap sources
 
-    $> docker run --rm=true -v "$(pwd)":/tuleap:ro enalean/tuleap-simpletest:c6-php56 \
-    /tuleap/tests/simpletest /tuleap/tests/integration /tuleap/plugins
+    # Generate Junit XML in Jenkins job context
+    $> make simpletest-70-ci
 
-To execute only one file:
+    # Run compatible tests with CLI reporter
+    $> make simpletest-70
 
-    $> docker run --rm -v "$(pwd)":/tuleap:ro enalean/tuleap-simpletest:c6-php56 --nodb /tuleap/tests/simpletest/common/project/ProjectManagerTest.php
-
-Please note the --nodb switch, it allows a faster start when there is no DB involved.
+    # Update tests compatible with php 7.0
+    $> make simpletest-70-update-compatibility-list

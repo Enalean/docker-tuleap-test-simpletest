@@ -33,4 +33,7 @@ RUN git config --global user.email "ut@tuleap.org" && git config --global user.n
     useradd codendiadm && \
     useradd gitolite && \
     ln -s /usr/share/tuleap/ /tuleap && \
-    service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'"
+    service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'" && \
+    mkdir -p /var/tmp/tuleap_cache && \
+    ln -s /var/tmp/codendi_cache /var/tmp/tuleap_cache && \
+    echo "Defaults:root    !requiretty" >> /etc/sudoers
