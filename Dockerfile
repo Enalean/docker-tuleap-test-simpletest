@@ -1,9 +1,6 @@
 ## Re-use tuleap base for caching ##
 FROM centos:6
 
-MAINTAINER Manuel Vacelet, manuel.vacelet@enalean.com
-MAINTAINER Yannis ROSSETTO <yannis.rossetto@enalean.com>
-
 COPY *.repo /etc/yum.repos.d/
 
 RUN yum install -y epel-release centos-release-scl && \
@@ -44,6 +41,7 @@ RUN yum install -y epel-release centos-release-scl && \
     php-openid-connect-client \
     php-password-compat \
     php-mediawiki-tuleap \
+    php-mediawiki-tuleap-123 \
     sudo \
     git \
     git19 \
