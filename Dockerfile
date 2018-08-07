@@ -1,6 +1,7 @@
 ## Re-use tuleap base for caching ##
 FROM centos:6
 
+COPY RPM-GPG-KEY-remi /etc/pki/rpm-gpg/
 COPY *.repo /etc/yum.repos.d/
 
 RUN yum install -y epel-release centos-release-scl && \
@@ -15,6 +16,17 @@ RUN yum install -y epel-release centos-release-scl && \
     rh-php56-php-imap \
     rh-php56-php-intl \
     rh-php56-php-pecl-xdebug \
+    sclo-php56-php-pecl-redis \
+    php56-php \
+    php56-php-soap \
+    php56-php-mysqlnd \
+    php56-php-gd \
+    php56-php-process \
+    php56-php-xml \
+    php56-php-mbstring \
+    php56-php-imap \
+    php56-php-intl \
+    php56-php-pecl-xdebug \
     sclo-php56-php-pecl-redis \
     php-restler \
     mysql-server \
@@ -35,7 +47,6 @@ RUN yum install -y epel-release centos-release-scl && \
     subversion \
     sha1collisiondetector \
     bzip2 \
-    php-pecl-xdebug \
     php-markdown \
     php-jwt \
     php-openid-connect-client \
@@ -44,7 +55,6 @@ RUN yum install -y epel-release centos-release-scl && \
     php-mediawiki-tuleap-123 \
     sudo \
     git \
-    git19 \
     rh-git29-git \
     gitolite3 && \
     yum clean all
