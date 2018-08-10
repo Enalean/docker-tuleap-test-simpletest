@@ -1,18 +1,22 @@
 FROM centos:6
 
+COPY RPM-GPG-KEY-remi /etc/pki/rpm-gpg/
+COPY *.repo /etc/yum.repos.d/
+
 RUN yum install -y epel-release centos-release-scl && \
     yum -y install \
-    rh-php70-php \
-    rh-php70-php-soap \
-    rh-php70-php-mysqlnd \
-    rh-php70-php-gd \
-    rh-php70-php-process \
-    rh-php70-php-xml \
-    rh-php70-php-mbstring \
-    rh-php70-php-imap \
-    rh-php70-php-intl \
-    rh-php70-php-pecl-xdebug \
-    sclo-php70-php-pecl-redis \
+    php72-php \
+    php72-php-soap \
+    php72-php-mysqlnd \
+    php72-php-gd \
+    php72-php-process \
+    php72-php-xml \
+    php72-php-mbstring \
+    php72-php-imap \
+    php72-php-intl \
+    php72-php-pecl-zip \
+    php72-php-pecl-xdebug \
+    php72-php-pecl-redis \
     mysql-server \
     rcs \
     cvs \
@@ -22,8 +26,6 @@ RUN yum install -y epel-release centos-release-scl && \
     tar \
     subversion \
     bzip2 \
-    php-pecl-xdebug \
-    php-markdown \
     sudo \
     rh-git29-git \
     gitolite3 && \
