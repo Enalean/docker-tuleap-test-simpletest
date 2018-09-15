@@ -21,9 +21,6 @@ RUN yum install -y epel-release centos-release-scl && \
     mysql-server \
     rcs \
     cvs \
-    php-ZendFramework2-Loader \
-    php-ZendFramework2-Mail \
-    php-pear-Mail-mimeDecode \
     php-guzzle-Guzzle \
     sha1collisiondetector \
     php-mediawiki-tuleap-123 \
