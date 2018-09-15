@@ -30,6 +30,7 @@ RUN yum install -y epel-release centos-release-scl && \
     bzip2 \
     sudo \
     rh-git29-git \
+    sclo-git212-git \
     gitolite3 && \
     yum clean all
 
