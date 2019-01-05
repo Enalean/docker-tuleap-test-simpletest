@@ -43,3 +43,5 @@ RUN git config --global user.email "ut@tuleap.org" && git config --global user.n
     mkdir -p /var/tmp/tuleap_cache && \
     ln -s /var/tmp/codendi_cache /var/tmp/tuleap_cache && \
     echo "Defaults:root    !requiretty" >> /etc/sudoers
+
+RUN rm -f /etc/opt/remi/php72/php.d/15-xdebug.ini
