@@ -16,7 +16,6 @@ RUN yum install -y epel-release centos-release-scl && \
     php72-php-intl \
     php72-php-sodium \
     php72-php-pecl-zip \
-    php72-php-pecl-xdebug \
     php72-php-pecl-redis \
     php72-php-pecl-mailparse \
     mysql-server \
@@ -43,5 +42,3 @@ RUN git config --global user.email "ut@tuleap.org" && git config --global user.n
     mkdir -p /var/tmp/tuleap_cache && \
     ln -s /var/tmp/codendi_cache /var/tmp/tuleap_cache && \
     echo "Defaults:root    !requiretty" >> /etc/sudoers
-
-RUN rm -f /etc/opt/remi/php72/php.d/15-xdebug.ini
