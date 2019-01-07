@@ -16,7 +16,6 @@ RUN yum install -y epel-release centos-release-scl && \
     php72-php-intl \
     php72-php-sodium \
     php72-php-pecl-zip \
-    php72-php-pecl-xdebug \
     php72-php-pecl-redis \
     php72-php-pecl-mailparse \
     mysql-server \
