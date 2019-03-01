@@ -1,4 +1,4 @@
-Docker image to execute Tuleap tests on PHP 7.2
+Docker image to execute Tuleap tests on PHP 7.3
 ===============================================
 
 How to use
@@ -7,10 +7,8 @@ How to use
 This is meant to be used from Tuleap sources
 
     # Generate Junit XML in Jenkins job context
-    $> make simpletest-72-ci
+    $> make simpletest-73-ci
 
     # Run compatible tests with CLI reporter
-    $> make simpletest-72
+    $> make simpletest-73
 
-    # Update tests compatible with php 7.2
-    $> make simpletest-72-update-compatibility-list

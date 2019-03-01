@@ -5,19 +5,19 @@ COPY *.repo /etc/yum.repos.d/
 
 RUN yum install -y epel-release centos-release-scl && \
     yum -y install \
-    php72-php \
-    php72-php-soap \
-    php72-php-mysqlnd \
-    php72-php-gd \
-    php72-php-process \
-    php72-php-xml \
-    php72-php-mbstring \
-    php72-php-imap \
-    php72-php-intl \
-    php72-php-sodium \
-    php72-php-pecl-zip \
-    php72-php-pecl-redis \
-    php72-php-pecl-mailparse \
+    php73-php \
+    php73-php-soap \
+    php73-php-mysqlnd \
+    php73-php-gd \
+    php73-php-process \
+    php73-php-xml \
+    php73-php-mbstring \
+    php73-php-imap \
+    php73-php-intl \
+    php73-php-sodium \
+    php73-php-pecl-zip \
+    php73-php-pecl-redis \
+    php73-php-pecl-mailparse \
     mysql-server \
     rcs \
     cvs \
@@ -29,7 +29,6 @@ RUN yum install -y epel-release centos-release-scl && \
     subversion \
     bzip2 \
     sudo \
-    rh-git29-git \
     sclo-git212-git \
     gitolite3 && \
     yum clean all
