@@ -15,6 +15,7 @@ RUN yum install -y epel-release centos-release-scl && \
     php73-php-imap \
     php73-php-intl \
     php73-php-sodium \
+    php73-php-ldap \
     php73-php-pecl-zip \
     php73-php-pecl-redis \
     php73-php-pecl-mailparse \
