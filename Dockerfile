@@ -1,25 +1,25 @@
-FROM centos:6
+FROM centos:7
 
 COPY RPM-GPG-KEY-remi /etc/pki/rpm-gpg/
 COPY *.repo /etc/yum.repos.d/
 
 RUN yum install -y epel-release centos-release-scl && \
     yum -y install \
-    php73-php \
-    php73-php-soap \
-    php73-php-mysqlnd \
-    php73-php-gd \
-    php73-php-process \
-    php73-php-xml \
-    php73-php-mbstring \
-    php73-php-imap \
-    php73-php-intl \
-    php73-php-sodium \
-    php73-php-ldap \
-    php73-php-pecl-zip \
-    php73-php-pecl-redis \
-    php73-php-pecl-mailparse \
-    mysql-server \
+    php74-php \
+    php74-php-soap \
+    php74-php-mysqlnd \
+    php74-php-gd \
+    php74-php-process \
+    php74-php-xml \
+    php74-php-mbstring \
+    php74-php-imap \
+    php74-php-intl \
+    php74-php-sodium \
+    php74-php-ldap \
+    php74-php-pecl-zip \
+    php74-php-pecl-redis \
+    php74-php-pecl-mailparse \
+    rh-mysql57-mysql-server \
     rcs \
     cvs \
     php-guzzle-Guzzle \
@@ -38,7 +38,8 @@ RUN git config --global user.email "ut@tuleap.org" && git config --global user.n
     useradd codendiadm && \
     useradd gitolite && \
     ln -s /usr/share/tuleap/ /tuleap && \
-    service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'" && \
+    sudo -u mysql /usr/bin/scl enable rh-mysql57 -- /opt/rh/rh-mysql57/root/usr/libexec/mysql-prepare-db-dir rh-mysql57-mysqld && \
+    sudo -u mysql /opt/rh/rh-mysql57/root/usr/libexec/mysqld-scl-helper enable rh-mysql57 -- /opt/rh/rh-mysql57/root/usr/libexec/mysqld --daemonize --basedir=/opt/rh/rh-mysql57/root/usr --pid-file=/var/run/rh-mysql57-mysqld/mysqld.pid && \
+    sleep 1 && /usr/bin/scl enable rh-mysql57 -- mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'" && \
     mkdir -p /var/tmp/tuleap_cache && \
-    ln -s /var/tmp/codendi_cache /var/tmp/tuleap_cache && \
     echo "Defaults:root    !requiretty" >> /etc/sudoers
