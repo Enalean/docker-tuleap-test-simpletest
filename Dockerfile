@@ -34,11 +34,13 @@ RUN yum install -y epel-release centos-release-scl && \
     gitolite3 && \
     yum clean all
 
+COPY start-mysqld.sh /usr/local/bin/
+
 RUN git config --global user.email "ut@tuleap.org" && git config --global user.name "Unit test runner" && \
     useradd codendiadm && \
     useradd gitolite && \
     ln -s /usr/share/tuleap/ /tuleap && \
-    service mysqld start && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'" && \
+    start-mysqld.sh && sleep 1 && mysql -e "GRANT ALL PRIVILEGES on *.* to 'integration_test'@'localhost' identified by 'welcome0'" && \
     mkdir -p /var/tmp/tuleap_cache && \
     ln -s /var/tmp/codendi_cache /var/tmp/tuleap_cache && \
     echo "Defaults:root    !requiretty" >> /etc/sudoers
